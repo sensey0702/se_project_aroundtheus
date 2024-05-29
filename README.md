@@ -22,6 +22,9 @@ In the future, I would love to learn how to make the buttons function and to add
 **Link to Site**
 (https://sensey0702.github.io/se_project_aroundtheus/)
 
+**Link to Screen Recording**
+![alt text](https://drive.google.com/file/d/1QJlwsvH3-JuzlQNh-lKa79A4BX-sJ2Lu/view?usp=sharing)
+
 **Screenshots of Project at Different Screen Widths**
 
 320px (minimum width - most mobile devices)
