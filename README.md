@@ -21,3 +21,21 @@ In the future, I would love to learn how to make the buttons to function and to 
 
 **Link to Site**
 (https://sensey0702.github.io/se_project_aroundtheus/)
+
+**Screenshots of Project at Different Screen Widths**
+
+320px (minimum width - most mobile devices)
+
+![alt text](./images/Responsive%20320px.png)
+![alt text](<./images/Responsive%20320px%20(2).png>)
+![alt text](<./images/Responsive%20320px%20(3).png>)
+
+800px (most tablet devices)
+
+![alt text](./images/Responsive%20800px.png)
+![alt text](<./images/Responsive%20800px%20(2).png>)
+
+1280px (most desktop devices)
+
+![alt text](./images/Responsive%201280px.png)
+![alt text](<./images/Responsive%201280px%20(2).png>)
