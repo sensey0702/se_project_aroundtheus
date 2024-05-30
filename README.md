@@ -23,7 +23,11 @@ In the future, I would love to learn how to make the buttons function and to add
 (https://sensey0702.github.io/se_project_aroundtheus/)
 
 **Link to Screen Recording**
+<<<<<<< HEAD
 (https://drive.google.com/file/d/1QJlwsvH3-JuzlQNh-lKa79A4BX-sJ2Lu/view?usp=sharing)
+=======
+https://drive.google.com/file/d/1QJlwsvH3-JuzlQNh-lKa79A4BX-sJ2Lu/view?usp=sharing
+>>>>>>> 3aa403b40beaed06d6fc4e9bd8c061f0b1859321
 
 **Screenshots of Project at Different Screen Widths**
 
