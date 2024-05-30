@@ -30,8 +30,4 @@
     margin: 45px 20px 0;
     max-width: calc(100% - 40px);
   }
-
-  .header__image {
-    margin-left: 20px;
-  }
 }
