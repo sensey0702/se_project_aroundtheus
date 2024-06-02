@@ -87,6 +87,7 @@
     margin-bottom: 36px;
     margin-left: 0;
     justify-content: center;
+    justify-items: center;
   }
 
   .profile__title {
