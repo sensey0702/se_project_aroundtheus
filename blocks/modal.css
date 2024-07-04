@@ -101,8 +101,9 @@
   }
 
   .modal__container {
-    max-width: 282px;
+    width: 282px;
     padding: 25px 22px;
+    box-sizing: border-box;
   }
   .modal__close {
     top: -48px;
