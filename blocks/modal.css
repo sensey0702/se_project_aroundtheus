@@ -6,12 +6,17 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  display: none;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s ease-in-out;
   padding: 0 19px;
 }
 
 .modal_opened {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transition: 0.5s ease-in-out;
 }
 
 .modal__container {
@@ -35,10 +40,12 @@
   top: -45px;
   right: -45px;
   cursor: pointer;
+  padding: 0px;
 }
 
 .modal__close:hover {
   background-image: url(../images/close\ hover.svg);
+  transition: 0.3s ease-in;
 }
 
 .modal__heading {
@@ -59,9 +66,8 @@
 }
 
 .modal__input {
-  height: 28px;
   width: 358px;
-  padding: 4px 1px 13px;
+  padding: 0px 1px 13px;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
@@ -74,7 +80,7 @@
 .modal__input::placeholder {
   font-weight: 400;
   font-size: 14px;
-  color: #000000;
+  color: #c4c4c4;
 }
 
 .modal__button {
@@ -93,6 +99,45 @@
 
 .modal__button:hover {
   background-color: rgba(0, 0, 0, 0.8);
+  transition: 0.2s ease-in;
+}
+
+.modal__preview {
+  padding: 0px;
+  position: relative;
+  margin: 90px auto;
+}
+
+.modal__preview_close-button {
+  background-image: url(../images/close.svg);
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: -45px;
+  right: -45px;
+  cursor: pointer;
+  padding: 0px;
+}
+
+.modal__preview_close-button:hover {
+  background-image: url(../images/close\ hover.svg);
+  transition: 0.2s ease-in;
+}
+
+.modal__image {
+  max-height: 75vh;
+  max-width: 75vw;
+}
+
+.modal__description {
+  font-size: 12px;
+  line-height: 1.2px;
+  height: 12px;
+  width: 291px;
 }
 
 @media screen and (max-width: 620px) and (min-width: 320px) {
@@ -107,7 +152,7 @@
   }
   .modal__close {
     top: -48px;
-    right: 0px;
+    right: 10px;
     width: 26px;
     height: 26px;
   }
@@ -121,6 +166,7 @@
   .modal__input {
     width: 100%;
     max-width: 238px;
+    padding-bottom: 9px;
   }
 
   .modal__button {
@@ -128,5 +174,17 @@
     font-size: 14px;
     margin-top: 15px;
     max-width: 238px;
+    max-height: 46px;
+  }
+
+  .modal__preview_close-button {
+    width: 30px;
+    height: 30px;
+    top: -35px;
+    right: -35px;
+  }
+
+  .modal__description {
+    width: 240px;
   }
 }
