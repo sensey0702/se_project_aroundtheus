@@ -105,27 +105,7 @@
 .modal__preview {
   padding: 0px;
   position: relative;
-  margin: 90px auto;
-}
-
-.modal__preview_close-button {
-  background-image: url(../images/close.svg);
-  border: none;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 40px;
-  width: 40px;
-  position: absolute;
-  top: -45px;
-  right: -45px;
-  cursor: pointer;
-  padding: 0px;
-}
-
-.modal__preview_close-button:hover {
-  background-image: url(../images/close\ hover.svg);
-  transition: 0.2s ease-in;
+  margin: auto;
 }
 
 .modal__image {
@@ -177,7 +157,7 @@
     max-height: 46px;
   }
 
-  .modal__preview_close-button {
+  #modal-preview-close-button {
     width: 30px;
     height: 30px;
     top: -35px;
