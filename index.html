@@ -55,48 +55,91 @@
         <button class="modal__close" id="edit-profile-close-button"></button>
         <p class="modal__heading">Edit profile</p>
         <form class="modal__form" id="edit-profile-form">
-          <input
-            type="text"
-            name="name"
-            id="profile-title-input"
-            class="modal__input"
-            placeholder="Name"
-          />
-          <input
-            type="text"
-            name="description"
-            id="profile-description-input"
-            placeholder="Description"
-            class="modal__input"
-          />
+          <div class="input-container">
+            <input
+              type="text"
+              name="name"
+              id="profile-title-input"
+              class="modal__input modal__input_type_error"
+              placeholder="Name"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span
+              class="modal__error_visible"
+              id="profile-title-input-error"
+            ></span>
+          </div>
+          <div class="input-container">
+            <input
+              type="text"
+              name="description"
+              id="profile-description-input"
+              placeholder="Description"
+              class="modal__input modal__input_type_error"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span
+              class="modal__error_visible"
+              id="profile-description-input-error"
+            ></span>
+          </div>
           <button type="submit" class="modal__button">Save</button>
         </form>
       </div>
     </div>
+
     <!--Add Card Modal-->
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button class="modal__close" id="add-card-close-button"></button>
         <p class="modal__heading">New place</p>
         <form class="modal__form" id="add-card-form">
-          <input
-            type="text"
-            name="title"
-            id="card-title-input"
-            class="modal__input"
-            placeholder="Title"
-          />
-          <input
-            type="text"
-            name="url"
-            id="card-url-input"
-            placeholder="Image link"
-            class="modal__input"
-          />
-          <button type="submit" class="modal__button">Create</button>
+          <div class="input-container">
+            <input
+              type="text"
+              name="title"
+              id="card-title-input"
+              class="modal__input"
+              placeholder="Title"
+              minlength="1"
+              maxlength="30"
+              required
+            />
+            <span
+              class="modal__input_type_error"
+              id="card-title-input-error"
+            ></span>
+          </div>
+          <div class="input-container">
+            <input
+              type="url"
+              name="url"
+              id="card-url-input"
+              placeholder="Image link"
+              class="modal__input"
+              required
+            />
+            <span
+              class="modal__input_type_error"
+              id="card-url-input-error"
+            ></span>
+          </div>
+          <button
+            type="submit"
+            id="submit-button"
+            class="modal__button modal__button_disabled"
+            disabled
+          >
+            Create
+          </button>
         </form>
       </div>
     </div>
+
     <!--Preview Image Modal-->
     <div class="modal" id="preview-image-modal">
       <div class="modal__preview">
@@ -105,6 +148,8 @@
         <p class="modal__description"></p>
       </div>
     </div>
+
+    <!--card template-->
     <template id="card-template">
       <li class="card">
         <img class="card__image" src="" alt="" />
@@ -116,5 +161,6 @@
       </li>
     </template>
     <script src="./scripts/index.js"></script>
+    <script defer src="./scripts/validation.js"></script>
   </body>
 </html>
