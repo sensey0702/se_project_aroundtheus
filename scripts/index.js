@@ -58,10 +58,12 @@ const submitButton = document.querySelector("#submit-button");
 /* Functions */
 function closePopUp(popup) {
   popup.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscClose);
 }
 
 function openPopUp(popup) {
   popup.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscClose);
 }
 
 function getCardElement(cardData) {
@@ -136,7 +138,6 @@ editProfileButton.addEventListener("click", () => {
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
-document.addEventListener("keydown", handleEscClose);
 document.addEventListener("click", handleOverlayClick);
 
 //add new card button

@@ -54,36 +54,37 @@
       <div class="modal__container">
         <button class="modal__close" id="edit-profile-close-button"></button>
         <p class="modal__heading">Edit profile</p>
-        <form class="modal__form" id="edit-profile-form">
+        <form class="modal__form" id="edit-profile-form" novalidate>
           <div class="input-container">
             <input
               type="text"
               name="name"
               id="profile-title-input"
-              class="modal__input modal__input_type_error"
+              class="modal__input"
               placeholder="Name"
               minlength="2"
               maxlength="40"
               required
             />
             <span
-              class="modal__error_visible"
+              class="modal__error modal__error_visible"
               id="profile-title-input-error"
             ></span>
           </div>
+
           <div class="input-container">
             <input
               type="text"
               name="description"
               id="profile-description-input"
               placeholder="Description"
-              class="modal__input modal__input_type_error"
+              class="modal__input"
               minlength="2"
               maxlength="200"
               required
             />
             <span
-              class="modal__error_visible"
+              class="modal__error modal__error_visible"
               id="profile-description-input-error"
             ></span>
           </div>
@@ -110,7 +111,7 @@
               required
             />
             <span
-              class="modal__input_type_error"
+              class="modal__error modal__error_visible"
               id="card-title-input-error"
             ></span>
           </div>
@@ -124,7 +125,7 @@
               required
             />
             <span
-              class="modal__input_type_error"
+              class="modal__error modal__error_visible"
               id="card-url-input-error"
             ></span>
           </div>
