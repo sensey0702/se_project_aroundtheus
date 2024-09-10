@@ -136,7 +136,6 @@ cardForm.addEventListener("submit", handleAddCardFormSubmit);
 
 addNewCardButton.addEventListener("click", () => {
   openPopUp(addCardModal);
-  addCardSubmitButton.classList.add("modal__button_disabled");
 });
 
 initialCards.forEach((cardData) => {
