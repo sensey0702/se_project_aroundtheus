@@ -26,16 +26,12 @@ export const initialCards = [
 ];
 export const editProfileButton = document.querySelector("#profile-edit-button");
 export const profileEditModal = document.querySelector("#profile-edit-modal");
-export const closeButtons = document.querySelectorAll(".modal__close");
-export const profileTitle = document.querySelector(".profile__title");
-export const profileDescription = document.querySelector(
-  ".profile__description"
-);
+
 export const profileTitleInput = document.querySelector("#profile-title-input");
 export const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
-export const profileForm = document.forms["profile-form"];
+
 export const cardListEl = document.querySelector(".cards__list");
 export const addNewCardButton = document.querySelector(".profile__add-button");
 export const addCardModal = document.querySelector("#add-card-modal");

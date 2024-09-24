@@ -1,10 +1,6 @@
 import {
   initialCards,
   editProfileButton,
-  profileTitle,
-  profileDescription,
-  profileDescriptionInput,
-  profileTitleInput,
   cardTitleInput,
   cardUrlInput,
   addNewCardButton,
@@ -17,7 +13,6 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 
-/* Validation Settings */
 const validationSettings = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
@@ -67,7 +62,6 @@ const userInfo = new UserInfo({
   jobSelector: ".profile__description",
 });
 
-/*Event Handlers*/
 function handleProfileEditSubmit() {
   const newInfo = {
     name: document.querySelector("#profile-title-input").value,

@@ -1,5 +1,3 @@
-import { profileForm } from "../utils/constants.js";
-
 export default class UserInfo {
   constructor({ nameSelector, jobSelector }) {
     this._nameElement = document.querySelector(nameSelector);
