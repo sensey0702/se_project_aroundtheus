@@ -75,6 +75,7 @@ function handleProfileEditSubmit() {
   };
   userInfo.setUserInfo(newInfo);
   profileEditPopup.close();
+  userInfo.getUserInfo(newInfo);
 }
 
 function handleAddCardFormSubmit() {
@@ -93,8 +94,6 @@ function handleImageClick(cardData) {
 }
 
 editProfileButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
   profileEditPopup.open();
 });
 
