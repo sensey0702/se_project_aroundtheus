@@ -1,40 +1,34 @@
+import "../pages/index.css";
 import {
   initialCards,
+  validationSettings,
   editProfileButton,
   cardTitleInput,
   cardUrlInput,
   addNewCardButton,
   cardForm,
+  formElements,
 } from "../utils/constants.js";
+
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithForms from "../components/PopupWithForms.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
-
-const validationSettings = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
-
-const formElements = document.querySelectorAll(".modal__form");
 
 formElements.forEach((formElement) => {
   const formValidation = new FormValidator(validationSettings, formElement);
   formValidation.enableValidation();
 });
 
-const profileEditPopup = new PopupWithForm("#profile-edit-modal", () => {
+const profileEditPopup = new PopupWithForms("#profile-edit-modal", () => {
   handleProfileEditSubmit();
 });
 
 profileEditPopup.setEventListeners();
 
-const addCardPopup = new PopupWithForm("#add-card-modal", () => {
+const addCardPopup = new PopupWithForms("#add-card-modal", () => {
   handleAddCardFormSubmit();
 });
 addCardPopup.setEventListeners();

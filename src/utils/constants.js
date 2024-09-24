@@ -24,6 +24,7 @@ export const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
 export const editProfileButton = document.querySelector("#profile-edit-button");
 export const profileEditModal = document.querySelector("#profile-edit-modal");
 
@@ -43,3 +44,12 @@ export const previewImage = previewImageModal.querySelector(".modal__image");
 export const previewImageDescription = previewImageModal.querySelector(
   ".modal__description"
 );
+export const formElements = document.querySelectorAll(".modal__form");
+
+export const validationSettings = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
