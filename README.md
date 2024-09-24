@@ -22,7 +22,7 @@
 - Functional forms
 - Functional like buttons
 
-- **About the Project**
+**About the Project**
 
 This project was made so all the elements are displayed correctly on popular screen sizes. In todays society, we have so many different devices and responsive design isn't just a nice feature, it is necessary. Nobody wants to have a horizontal scroll. I am currently working on the modals functioning, forms functioning, and refactoring my code to be object oriented.
 
