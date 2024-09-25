@@ -3,8 +3,6 @@ import {
   initialCards,
   validationSettings,
   editProfileButton,
-  cardTitleInput,
-  cardUrlInput,
   addNewCardButton,
   cardForm,
   formElements,
@@ -22,15 +20,17 @@ formElements.forEach((formElement) => {
   formValidation.enableValidation();
 });
 
-const profileEditPopup = new PopupWithForms("#profile-edit-modal", () => {
-  handleProfileEditSubmit();
-});
+const profileEditPopup = new PopupWithForms(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+);
 
 profileEditPopup.setEventListeners();
 
-const addCardPopup = new PopupWithForms("#add-card-modal", () => {
-  handleAddCardFormSubmit();
-});
+const addCardPopup = new PopupWithForms(
+  "#add-card-modal",
+  handleAddCardFormSubmit
+);
 addCardPopup.setEventListeners();
 
 const cardSection = new Section(
@@ -56,20 +56,13 @@ const userInfo = new UserInfo({
   jobSelector: ".profile__description",
 });
 
-function handleProfileEditSubmit() {
-  const newInfo = {
-    name: document.querySelector("#profile-title-input").value,
-    job: document.querySelector("#profile-description-input").value,
-  };
-  userInfo.setUserInfo(newInfo);
+function handleProfileEditSubmit(formData) {
+  userInfo.setUserInfo(formData);
   profileEditPopup.close();
-  userInfo.getUserInfo(newInfo);
 }
 
-function handleAddCardFormSubmit() {
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  cardSection.addItem(createCard({ name, link }));
+function handleAddCardFormSubmit(formData) {
+  cardSection.addItem(createCard(formData));
   addCardPopup.close();
   cardForm.reset();
 }
@@ -82,6 +75,8 @@ function handleImageClick(cardData) {
 }
 
 editProfileButton.addEventListener("click", () => {
+  const currentUserInfo = userInfo.getUserInfo();
+  profileEditPopup.setInputValues(currentUserInfo);
   profileEditPopup.open();
 });
 

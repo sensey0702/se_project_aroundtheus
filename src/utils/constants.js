@@ -37,13 +37,8 @@ export const cardListEl = document.querySelector(".cards__list");
 export const addNewCardButton = document.querySelector(".profile__add-button");
 export const addCardModal = document.querySelector("#add-card-modal");
 export const cardForm = document.forms["card-form"];
-export const cardTitleInput = document.querySelector("#card-title-input");
-export const cardUrlInput = document.querySelector("#card-url-input");
-export const previewImageModal = document.querySelector("#preview-image-modal");
-export const previewImage = previewImageModal.querySelector(".modal__image");
-export const previewImageDescription = previewImageModal.querySelector(
-  ".modal__description"
-);
+// export const cardTitleInput = document.querySelector("#card-title-input");
+// export const cardUrlInput = document.querySelector("#card-url-input");
 export const formElements = document.querySelectorAll(".modal__form");
 
 export const validationSettings = {
