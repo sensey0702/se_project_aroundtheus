@@ -25,6 +25,9 @@ export const initialCards = [
   },
 ];
 
+export const profileName = document.querySelector("#profile-title");
+export const profileAbout = document.querySelector("#profile-description");
+export const profileAvatar = document.querySelector("#profile-image");
 export const editProfileButton = document.querySelector("#profile-edit-button");
 export const profileEditModal = document.querySelector("#profile-edit-modal");
 
