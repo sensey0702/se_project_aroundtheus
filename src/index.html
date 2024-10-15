@@ -144,6 +144,23 @@
       </div>
     </div>
 
+    <!--Delete Card Modal-->
+    <div class="modal modal_opened" id="delete-card-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="delete-card-close-button"></button>
+        <p class="modal__heading modal__heading_type_delete">Are you sure?</p>
+        <form class="modal__form">
+          <button
+            type="submit"
+            id="save-delete-button"
+            class="modal__button modal__button_type_delete"
+          >
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!--Preview Image Modal-->
     <div class="modal" id="preview-image-modal">
       <div class="modal__preview">
@@ -157,7 +174,11 @@
     <template id="card-template">
       <li class="card">
         <img class="card__image" src="" alt="" />
-        <button type="submit" class="card__delete-button"></button>
+        <button
+          type="submit"
+          class="card__delete-button"
+          id="card-delete-button"
+        ></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button type="button" class="card__like-button"></button>

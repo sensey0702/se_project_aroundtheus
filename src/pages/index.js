@@ -6,18 +6,18 @@ import {
   addNewCardButton,
   cardForm,
   formElements,
-  profileAbout,
-  profileAvatar,
-  profileName,
+  deleteCardButton,
 } from "../utils/constants.js";
 
 import Api from "../components/Api.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
+
 import PopupWithForms from "../components/PopupWithForms.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
+import Popup from "../components/Popup.js";
 
 formElements.forEach((formElement) => {
   const formValidation = new FormValidator(validationSettings, formElement);
@@ -37,17 +37,15 @@ const addCardPopup = new PopupWithForms(
 );
 addCardPopup.setEventListeners();
 
-// const cardSection = new Section(
-//   {
-//     items: initialCards,
-//     renderer: (item) => {
-//       const card = createCard(item);
-//       cardSection.addItem(card);
-//     },
-//   },
-//   ".cards__list"
-// );
-// cardSection.renderItems();
+const cardSection = new Section(
+  {
+    renderer: (item) => {
+      const card = createCard(item);
+      cardSection.addItem(card);
+    },
+  },
+  ".cards__list"
+);
 
 function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
@@ -82,17 +80,7 @@ api
 api
   .getInitialCards()
   .then((result) => {
-    const cardSection = new Section(
-      {
-        items: result,
-        renderer: (item) => {
-          const card = createCard(item);
-          cardSection.addItem(card);
-        },
-      },
-      ".cards__list"
-    );
-    cardSection.renderItems();
+    cardSection.renderItems(result);
   })
   .catch((err) => {
     console.error(err);
@@ -131,6 +119,13 @@ imagePopup.setEventListeners();
 function handleImageClick(cardData) {
   imagePopup.open(cardData);
 }
+
+//   const deleteCardPopup = new Popup("#delete-card-modal");
+//   deleteCardPopup.setEventListeners();
+
+//   deleteCardButton.addEventListener("click", () => {
+//     deleteCardPopup.open();
+//   });
 
 editProfileButton.addEventListener("click", () => {
   const currentUserInfo = userInfo.getUserInfo();
