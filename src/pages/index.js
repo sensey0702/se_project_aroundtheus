@@ -37,17 +37,17 @@ const addCardPopup = new PopupWithForms(
 );
 addCardPopup.setEventListeners();
 
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const card = createCard(item);
-      cardSection.addItem(card);
-    },
-  },
-  ".cards__list"
-);
-cardSection.renderItems();
+// const cardSection = new Section(
+//   {
+//     items: initialCards,
+//     renderer: (item) => {
+//       const card = createCard(item);
+//       cardSection.addItem(card);
+//     },
+//   },
+//   ".cards__list"
+// );
+// cardSection.renderItems();
 
 function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
@@ -57,7 +57,8 @@ function createCard(cardData) {
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
-  jobSelector: ".profile__description",
+  aboutSelector: ".profile__description",
+  avatarSelector: "#profile-image",
 });
 
 const api = new Api({
@@ -69,34 +70,59 @@ const api = new Api({
 });
 
 api
-  .get("/users/me")
+  .getUserInfo()
   .then((result) => {
-    profileName.textContent = result.name;
-    profileAbout.textContent = result.about;
-    profileAvatar.src = result.avatar;
+    userInfo.setUserInfo(result);
+    userInfo.setAvatar(result);
   })
   .catch((err) => {
     console.error(err);
   });
 
 api
-  .get("/cards")
+  .getInitialCards()
   .then((result) => {
-    console.log(result);
+    const cardSection = new Section(
+      {
+        items: result,
+        renderer: (item) => {
+          const card = createCard(item);
+          cardSection.addItem(card);
+        },
+      },
+      ".cards__list"
+    );
+    cardSection.renderItems();
   })
   .catch((err) => {
     console.error(err);
   });
 
 function handleProfileEditSubmit(formData) {
-  userInfo.setUserInfo(formData);
-  profileEditPopup.close();
+  api
+    .editProfileInfo(formData)
+    .then(() => {
+      userInfo.setUserInfo(formData);
+      profileEditPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+      alert("Could not change user info!");
+    });
 }
 
 function handleAddCardFormSubmit(formData) {
-  cardSection.addItem(createCard(formData));
-  addCardPopup.close();
-  cardForm.reset();
+  api
+    .addNewCard(formData)
+    .then(() => {
+      cardSection.addItem(createCard(formData));
+      addCardPopup.close();
+      cardForm.reset();
+    })
+    .catch((err) => {
+      console.error(err);
+      alert("Could not add new place!");
+    });
 }
 
 const imagePopup = new PopupWithImage("#preview-image-modal");

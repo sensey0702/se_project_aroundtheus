@@ -7,6 +7,7 @@ export default class Api {
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
+      method: "GET",
       headers: { ...this._headers },
     }).then((res) => {
       if (res.ok) {
@@ -17,10 +18,8 @@ export default class Api {
     });
   }
 
-  // other methods for working with the API
-
-  get(endpoint) {
-    return fetch(`${this._baseUrl}${endpoint}`, {
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: { ...this._headers },
     }).then((res) => {
@@ -32,11 +31,14 @@ export default class Api {
     });
   }
 
-  patch(endpoint, body) {
-    return fetch(`${this._baseUrl}${endpoint}`, {
+  editProfileInfo({ name, about }) {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify(body),
+      headers: { ...this._headers },
+      body: JSON.stringify({
+        name,
+        about,
+      }),
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -46,38 +48,11 @@ export default class Api {
     });
   }
 
-  post(endpoint, body) {
-    return fetch(`${this._baseUrl}${endpoint}`, {
+  addNewCard({ name, link }) {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: this._headers,
-      body: JSON.stringify(body),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // if the server returns an error, reject the promise
-      return Promise.reject(`Error: ${res.status}`);
-    });
-  }
-
-  put(endpoint, body) {
-    return fetch(`${this._baseUrl}${endpoint}`, {
-      method: "PUT",
-      headers: this._headers,
-      body: JSON.stringify(body),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // if the server returns an error, reject the promise
-      return Promise.reject(`Error: ${res.status}`);
-    });
-  }
-
-  delete(endpoint) {
-    return fetch(`${this.baseUrl}${endpoint}`, {
-      method: "DELETE",
-      headers: this.headers,
+      headers: { ...this._headers },
+      body: JSON.stringify({ name, link }),
     }).then((res) => {
       if (res.ok) {
         return res.json();
