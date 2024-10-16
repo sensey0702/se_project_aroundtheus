@@ -49,11 +49,23 @@ export default class Api {
   }
 
   addNewCard({ name, link }) {
-    console.log({ name, link });
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: { ...this._headers },
-      body: JSON.stringify({ name, link }),
+      body: JSON.stringify({ name, link, _id }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // if the server returns an error, reject the promise
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+
+  deleteCard() {
+    return fetch(`${this._baseUrl}/cards/${_id}`, {
+      method: "DELETE",
+      headers: { ...this._headers },
     }).then((res) => {
       if (res.ok) {
         return res.json();

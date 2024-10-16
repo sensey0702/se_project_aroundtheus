@@ -1,12 +1,10 @@
 import "../pages/index.css";
 import {
-  initialCards,
   validationSettings,
   editProfileButton,
   addNewCardButton,
   cardForm,
   formElements,
-  deleteCardButton,
 } from "../utils/constants.js";
 
 import Api from "../components/Api.js";
@@ -17,7 +15,7 @@ import Section from "../components/Section.js";
 import PopupWithForms from "../components/PopupWithForms.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
-import Popup from "../components/Popup.js";
+import PopupWithConfirm from "../components/PopupWithConfirm.js";
 
 formElements.forEach((formElement) => {
   const formValidation = new FormValidator(validationSettings, formElement);
@@ -48,7 +46,12 @@ const cardSection = new Section(
 );
 
 function createCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handleImageClick,
+    handleDeleteCard
+  );
   const cardElement = card.getView();
   return cardElement;
 }
@@ -113,6 +116,25 @@ function handleAddCardFormSubmit(formData) {
     });
 }
 
+function handleDeleteCardFormSubmit(cardData) {
+  api
+    .deleteCard(cardData)
+    .then((res) => {
+      console.log(res);
+      // refactor? keep in card class under delete card handler?
+      // _handleDeleteCard() {
+      //   this._cardElement.remove();
+      //   this._cardElement = null;
+      // }
+
+      deleteCardPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+      alert("Could not delete place!");
+    });
+}
+
 const imagePopup = new PopupWithImage("#preview-image-modal");
 imagePopup.setEventListeners();
 
@@ -120,12 +142,15 @@ function handleImageClick(cardData) {
   imagePopup.open(cardData);
 }
 
-//   const deleteCardPopup = new Popup("#delete-card-modal");
-//   deleteCardPopup.setEventListeners();
+const deleteCardPopup = new PopupWithConfirm(
+  "#delete-card-modal",
+  handleDeleteCardFormSubmit
+);
+deleteCardPopup.setEventListeners();
 
-//   deleteCardButton.addEventListener("click", () => {
-//     deleteCardPopup.open();
-//   });
+function handleDeleteCard(cardData) {
+  deleteCardPopup.open(cardData);
+}
 
 editProfileButton.addEventListener("click", () => {
   const currentUserInfo = userInfo.getUserInfo();
