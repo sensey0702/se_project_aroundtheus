@@ -52,7 +52,7 @@ export default class Api {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: { ...this._headers },
-      body: JSON.stringify({ name, link, _id }),
+      body: JSON.stringify({ name, link }),
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -62,7 +62,7 @@ export default class Api {
     });
   }
 
-  deleteCard() {
+  deleteCard(_id) {
     return fetch(`${this._baseUrl}/cards/${_id}`, {
       method: "DELETE",
       headers: { ...this._headers },

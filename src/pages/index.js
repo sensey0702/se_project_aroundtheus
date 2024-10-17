@@ -116,25 +116,6 @@ function handleAddCardFormSubmit(formData) {
     });
 }
 
-function handleDeleteCardFormSubmit(cardData) {
-  api
-    .deleteCard(cardData)
-    .then((res) => {
-      console.log(res);
-      // refactor? keep in card class under delete card handler?
-      // _handleDeleteCard() {
-      //   this._cardElement.remove();
-      //   this._cardElement = null;
-      // }
-
-      deleteCardPopup.close();
-    })
-    .catch((err) => {
-      console.error(err);
-      alert("Could not delete place!");
-    });
-}
-
 const imagePopup = new PopupWithImage("#preview-image-modal");
 imagePopup.setEventListeners();
 
@@ -142,14 +123,29 @@ function handleImageClick(cardData) {
   imagePopup.open(cardData);
 }
 
-const deleteCardPopup = new PopupWithConfirm(
-  "#delete-card-modal",
-  handleDeleteCardFormSubmit
-);
+const deleteCardPopup = new PopupWithConfirm("#delete-card-modal", () => {});
 deleteCardPopup.setEventListeners();
 
-function handleDeleteCard(cardData) {
-  deleteCardPopup.open(cardData);
+//runs when you click on a card's delete button
+function handleDeleteCard(card) {
+  deleteCardPopup.open();
+  deleteCardPopup.setSubmitHandler(handleDeleteCardFormSubmit);
+
+  //runs when you click the 'yes' button on the delete card modal
+  function handleDeleteCardFormSubmit() {
+    api
+      .deleteCard(card.id)
+      .then(() => {
+        card._element.remove();
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Could not delete place!");
+      })
+      .finally(() => {
+        deleteCardPopup.close();
+      });
+  }
 }
 
 editProfileButton.addEventListener("click", () => {
