@@ -50,7 +50,8 @@ function createCard(cardData) {
     cardData,
     "#card-template",
     handleImageClick,
-    handleDeleteCard
+    handleDeleteCard,
+    handleLikeIcon
   );
   const cardElement = card.getView();
   return cardElement;
@@ -134,9 +135,9 @@ function handleDeleteCard(card) {
   //runs when you click the 'yes' button on the delete card modal
   function handleDeleteCardFormSubmit() {
     api
-      .deleteCard(card.id)
+      .deleteCard(card.getId())
       .then(() => {
-        card._element.remove();
+        card.handleDeleteClick();
       })
       .catch((err) => {
         console.error(err);
@@ -144,6 +145,28 @@ function handleDeleteCard(card) {
       })
       .finally(() => {
         deleteCardPopup.close();
+      });
+  }
+}
+
+function handleLikeIcon(card) {
+  if (!card.getIsLiked()) {
+    api
+      .addLike(card.getId())
+      .then(() => {
+        card.handleLikeClick();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  } else {
+    api
+      .removeLike(card.getId())
+      .then(() => {
+        card.handleLikeClick();
+      })
+      .catch((err) => {
+        console.error(err);
       });
   }
 }
