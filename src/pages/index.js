@@ -106,8 +106,8 @@ function handleProfileEditSubmit(formData) {
 function handleAddCardFormSubmit(formData) {
   api
     .addNewCard(formData)
-    .then(() => {
-      cardSection.addItem(createCard(formData));
+    .then((cardData) => {
+      cardSection.addItem(createCard(cardData));
       addCardPopup.close();
       cardForm.reset();
     })
@@ -179,4 +179,30 @@ editProfileButton.addEventListener("click", () => {
 
 addNewCardButton.addEventListener("click", () => {
   addCardPopup.open();
+});
+
+const changeAvatarPopup = new PopupWithForms(
+  "#update-avatar-modal",
+  handleChangeAvatarFormSubmit
+);
+changeAvatarPopup.setEventListeners();
+
+function handleChangeAvatarFormSubmit(formData) {
+  api
+    .updateAvatar(formData.link)
+    .then((res) => {
+      console.log(res);
+
+      userInfo.setAvatar(res);
+      changeAvatarPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+      alert("Could not change profile picture!");
+    });
+}
+
+const changeAvatarPic = document.querySelector(".profile__image");
+changeAvatarPic.addEventListener("click", () => {
+  changeAvatarPopup.open();
 });

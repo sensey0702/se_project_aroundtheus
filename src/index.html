@@ -144,6 +144,38 @@
       </div>
     </div>
 
+    <!--Update Avatar Modal-->
+    <div class="modal" id="update-avatar-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="update-avatar-close-button"></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form class="modal__form" id="card-form">
+          <div class="input-container">
+            <input
+              type="url"
+              name="link"
+              id="avatar-url-input"
+              placeholder="Image link"
+              class="modal__input"
+              required
+            />
+            <span
+              class="modal__error modal__error_visible"
+              id="avatar-url-input-error"
+            ></span>
+          </div>
+          <button
+            type="submit"
+            id="submit-button"
+            class="modal__button modal__button_disabled"
+            disabled
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!--Delete Card Modal-->
     <div class="modal" id="delete-card-modal">
       <div class="modal__container">

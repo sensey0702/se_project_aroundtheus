@@ -100,4 +100,18 @@ export default class Api {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
+
+  updateAvatar(link) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: { ...this._headers },
+      body: JSON.stringify({ avatar: link }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // if the server returns an error, reject the promise
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
 }
