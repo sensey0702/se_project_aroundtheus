@@ -48,6 +48,9 @@ export const cardEl = document.querySelector("#card-template");
 export const editAvatarButton = document.querySelector(
   ".profile__edit-avatar-button"
 );
+export const yesConfirmationButton = document.querySelector(
+  "#save-delete-button"
+);
 export const validationSettings = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",

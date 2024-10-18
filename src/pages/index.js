@@ -6,6 +6,7 @@ import {
   cardForm,
   formElements,
   editAvatarButton,
+  yesConfirmationButton,
 } from "../utils/constants.js";
 
 import Api from "../components/Api.js";
@@ -147,13 +148,15 @@ function handleDeleteCard(card) {
       .deleteCard(card.getId())
       .then(() => {
         card.handleDeleteClick();
+        deleteCardPopup.close();
       })
       .catch((err) => {
         console.error(err);
         alert("Could not delete place!");
       })
       .finally(() => {
-        deleteCardPopup.close();
+        yesConfirmationButton.disabled = false;
+        yesConfirmationButton.classList.remove("modal__button_disabled");
       });
   }
 }
@@ -201,8 +204,6 @@ function handleChangeAvatarFormSubmit(formData) {
   api
     .updateAvatar(formData.link)
     .then((res) => {
-      console.log(res);
-
       userInfo.setAvatar(res);
       changeAvatarPopup.close();
     })
