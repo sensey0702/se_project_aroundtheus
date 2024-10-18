@@ -92,6 +92,7 @@ api
   });
 
 function handleProfileEditSubmit(formData) {
+  profileEditPopup.setSubmitButtonText("Saving...");
   api
     .editProfileInfo(formData)
     .then(() => {
@@ -101,10 +102,14 @@ function handleProfileEditSubmit(formData) {
     .catch((err) => {
       console.error(err);
       alert("Could not change user info!");
+    })
+    .finally(() => {
+      profileEditPopup.setSubmitButtonText("Save");
     });
 }
 
 function handleAddCardFormSubmit(formData) {
+  addCardPopup.setSubmitButtonText("Saving...");
   api
     .addNewCard(formData)
     .then((cardData) => {
@@ -115,6 +120,9 @@ function handleAddCardFormSubmit(formData) {
     .catch((err) => {
       console.error(err);
       alert("Could not add new place!");
+    })
+    .finally(() => {
+      addCardPopup.setSubmitButtonText("Create");
     });
 }
 
@@ -189,6 +197,7 @@ const changeAvatarPopup = new PopupWithForms(
 changeAvatarPopup.setEventListeners();
 
 function handleChangeAvatarFormSubmit(formData) {
+  changeAvatarPopup.setSubmitButtonText("Saving...");
   api
     .updateAvatar(formData.link)
     .then((res) => {
@@ -200,6 +209,9 @@ function handleChangeAvatarFormSubmit(formData) {
     .catch((err) => {
       console.error(err);
       alert("Could not change profile picture!");
+    })
+    .finally(() => {
+      changeAvatarPopup.setSubmitButtonText("Save");
     });
 }
 
