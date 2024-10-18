@@ -45,6 +45,9 @@ export const cardForm = document.forms["card-form"];
 export const formElements = document.querySelectorAll(".modal__form");
 export const deleteCardButton = document.querySelector(".card__delete-button");
 export const cardEl = document.querySelector("#card-template");
+export const editAvatarButton = document.querySelector(
+  ".profile__edit-avatar-button"
+);
 export const validationSettings = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",

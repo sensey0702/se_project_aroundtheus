@@ -5,6 +5,7 @@ import {
   addNewCardButton,
   cardForm,
   formElements,
+  editAvatarButton,
 } from "../utils/constants.js";
 
 import Api from "../components/Api.js";
@@ -202,7 +203,6 @@ function handleChangeAvatarFormSubmit(formData) {
     });
 }
 
-const changeAvatarPic = document.querySelector(".profile__image");
-changeAvatarPic.addEventListener("click", () => {
+editAvatarButton.addEventListener("click", () => {
   changeAvatarPopup.open();
 });
