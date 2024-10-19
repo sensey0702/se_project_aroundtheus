@@ -153,10 +153,6 @@ function handleDeleteCard(card) {
       .catch((err) => {
         console.error(err);
         alert("Could not delete place!");
-      })
-      .finally(() => {
-        yesConfirmationButton.disabled = false;
-        yesConfirmationButton.classList.remove("modal__button_disabled");
       });
   }
 }

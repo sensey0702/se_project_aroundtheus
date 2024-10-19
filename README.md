@@ -1,6 +1,6 @@
-# Project 3: Around The U.S.
+# Around The U.S.
 
-### Sprint 8
+### Sprint 9
 
 ### Project Features
 
@@ -21,6 +21,8 @@
 - Modal windows
 - Functional forms
 - Functional like buttons
+- Async JavaScript
+- API requests
 
 **About the Project**
 
