@@ -22,19 +22,24 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            class="profile__image"
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Avatar"
-          />
+          <div class="profile__avatar-container">
+            <img
+              class="profile__image"
+              src=""
+              alt="Avatar"
+              id="profile-image"
+            />
+
+            <button type="button" class="profile__edit-avatar-button"></button>
+          </div>
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title" id="profile-title"></h1>
             <button
               type="button"
               class="profile__edit-button"
               id="profile-edit-button"
             ></button>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description" id="profile-description"></p>
           </div>
           <button type="button" class="profile__add-button"></button>
         </section>
@@ -52,7 +57,12 @@
       <div class="modal__container">
         <button class="modal__close" id="edit-profile-close-button"></button>
         <p class="modal__heading">Edit profile</p>
-        <form class="modal__form" id="profile-form" novalidate>
+        <form
+          class="modal__form"
+          id="profile-form"
+          name="profile-form"
+          novalidate
+        >
           <div class="input-container">
             <input
               type="text"
@@ -73,7 +83,7 @@
           <div class="input-container">
             <input
               type="text"
-              name="job"
+              name="about"
               id="profile-description-input"
               placeholder="Description"
               class="modal__input"
@@ -98,7 +108,7 @@
       <div class="modal__container">
         <button class="modal__close" id="add-card-close-button"></button>
         <p class="modal__heading">New place</p>
-        <form class="modal__form" id="card-form">
+        <form class="modal__form" id="card-form" name="card-form">
           <div class="input-container">
             <input
               type="text"
@@ -141,6 +151,55 @@
       </div>
     </div>
 
+    <!--Update Avatar Modal-->
+    <div class="modal" id="update-avatar-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="update-avatar-close-button"></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form class="modal__form" name="update-avatar-form">
+          <div class="input-container">
+            <input
+              type="url"
+              name="link"
+              id="avatar-url-input"
+              placeholder="Image link"
+              class="modal__input"
+              required
+            />
+            <span
+              class="modal__error modal__error_visible"
+              id="avatar-url-input-error"
+            ></span>
+          </div>
+          <button
+            type="submit"
+            id="submit-button"
+            class="modal__button modal__button_disabled"
+            disabled
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!--Delete Card Modal-->
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="delete-card-close-button"></button>
+        <p class="modal__heading modal__heading_type_delete">Are you sure?</p>
+        <form class="modal__form">
+          <button
+            type="submit"
+            id="save-delete-button"
+            class="modal__button modal__button_type_delete"
+          >
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!--Preview Image Modal-->
     <div class="modal" id="preview-image-modal">
       <div class="modal__preview">
@@ -154,7 +213,11 @@
     <template id="card-template">
       <li class="card">
         <img class="card__image" src="" alt="" />
-        <button type="submit" class="card__delete-button"></button>
+        <button
+          type="submit"
+          class="card__delete-button"
+          id="card-delete-button"
+        ></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button type="button" class="card__like-button"></button>

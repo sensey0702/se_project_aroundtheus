@@ -59,6 +59,10 @@
   padding: 0 0 54px;
 }
 
+.modal__heading_type_delete {
+  padding: 0 0 38px;
+}
+
 .modal__form {
   display: flex;
   flex-direction: column;
@@ -120,6 +124,10 @@
 .modal__button:hover {
   background-color: rgba(0, 0, 0, 0.8);
   transition: 0.2s ease-in;
+}
+
+.modal__button_type_delete {
+  margin-top: 0px;
 }
 
 .modal__button_disabled {
