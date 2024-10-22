@@ -6,7 +6,6 @@ import {
   cardForm,
   formElements,
   editAvatarButton,
-  yesConfirmationButton,
 } from "../utils/constants.js";
 
 import Api from "../components/Api.js";
@@ -19,10 +18,23 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
 
-formElements.forEach((formElement) => {
-  const formValidation = new FormValidator(validationSettings, formElement);
-  formValidation.enableValidation();
-});
+// define an object for storing validators
+const formValidators = {};
+
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formElements.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    // Here you get the name of the form (if you don’t have it then you need to add it into each form in `index.html` first)
+    const formName = formElement.getAttribute("name");
+
+    // Here you store the validator using the `name` of the form
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(validationSettings);
 
 const profileEditPopup = new PopupWithForms(
   "#profile-edit-modal",
@@ -117,6 +129,7 @@ function handleAddCardFormSubmit(formData) {
       cardSection.addItem(createCard(cardData));
       addCardPopup.close();
       cardForm.reset();
+      formValidators["card-form"].disableSubmitButton();
     })
     .catch((err) => {
       console.error(err);
